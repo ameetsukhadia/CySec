@@ -1,1 +1,19 @@
+step 1, i found out my local IP address using ifconfig in linux terminal which is 10.0.2.15
+step 2, and netmask is 255.255.255.0 
+step 3, then i use nmap tool for scanning the open ports and services (e.g. 10.0.2.0/24)
+these are the ip addr 10.0.2.2, 10.0.2.3, 10.0.2.4, 10.0.2.15
+scan report for 10.0.2.2 open ports are 135/tcp with service of msrpc, 445/tcp with service of microsoft-ds, 5357/tcp with service of wsdapi 
+scan report for 10.0.2.3 open ports are 135/tcp with service of msrpc, 445/tcp with service of microsoft-ds, 5357/tcp with service of wsdapi
+scan report for 10.0.2.4 open ports are 135/tcp with service of msrpc, 445/tcp with service of microsoft-ds, 5357/tcp with service of wsdapi
+scan report for 10.0.2.15 which machine local addr, nmap scaned 1000 ports by default and all 1000 are in ignored state
 
+discription of service and related vulnerablities
+msrpc (microsoft remote procedure call) that use port 135 by default, it can use ip addr range between 1024-65535 in older system. msrpc service enables a program on one computer to execute 
+on another computer. vulnerablities are security flaws in windows system. these vulnerablity can be used to execute arbitrary code on affected system.
+
+microsoft-ds (microsoft directory service) it refers to the directory service such as SMB (server message block) protocol running on port 445 by default. it enables the service like files sharing
+, printer sharing and other network service. Vulnerability or security flaws in SMB could allow remote execution.
+
+wsdapi (web services on devices API) supports the implementation of client-controlled devices and services, and device hosts conforming to the Devices Profile for Web Services (DPWS).
+WSD allows a client to discover and access a remote device and its associated services across a network. It supports device discovery, description, control, and eventing. vulnerabilty in  wsdapi
+can allow attacker to remote code execution using special crafted packets.
